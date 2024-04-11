@@ -8,12 +8,8 @@
 
   <ItemGroup>
     <Folder Include="Features\CQRS\Commands\OrderingCommands\" />
-    <Folder Include="Features\CQRS\Commands\OrderDetailCommands\" />
-    <Folder Include="Features\CQRS\Handlers\OrderDetailHandlers\" />
     <Folder Include="Features\CQRS\Handlers\OrderingHandlers\" />
-    <Folder Include="Features\CQRS\Queries\OrderDetailQueries\" />
     <Folder Include="Features\CQRS\Queries\OrderingQueries\" />
-    <Folder Include="Features\CQRS\Results\OrderDetailResults\" />
     <Folder Include="Features\CQRS\Results\OrderingResults\" />
     <Folder Include="Features\MediatR\" />
   </ItemGroup>
