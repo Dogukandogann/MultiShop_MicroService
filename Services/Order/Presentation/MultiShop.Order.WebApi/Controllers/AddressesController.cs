@@ -26,7 +26,7 @@ namespace MultiShop.Order.WebApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> AddressList()
+        public async Task<IActionResult> GetAddressById()
         {
             var values = await _getAddressQueryHandler.Handle();
             return Ok(values);
