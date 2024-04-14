@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\CQRS\Commands\OrderingCommands\" />
+    <Folder Include="Features\CQRS\Handlers\OrderingHandlers\" />
+    <Folder Include="Features\CQRS\Queries\OrderingQueries\" />
+    <Folder Include="Features\CQRS\Results\OrderingResults\" />
+    <Folder Include="Features\MediatR\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MultiShop.Order.Domain\MultiShop.Order.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
