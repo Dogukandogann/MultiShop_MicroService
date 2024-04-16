@@ -27,13 +27,13 @@ namespace MultiShop.Order.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> OrderDetailList()
         {
-            var values = _getOrderDetailQueryHandler.Handle();
+            var values = await _getOrderDetailQueryHandler.Handle();
             return Ok(values);
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetOrderDetailById(int id)
         {
-            var values = _getOrderDetailByIdQueryHandler.Handle(new GetOrderDetailByIdQuery(id));
+            var values = await _getOrderDetailByIdQueryHandler.Handle(new GetOrderDetailByIdQuery(id));
             return Ok(values);
         }
         [HttpPost]

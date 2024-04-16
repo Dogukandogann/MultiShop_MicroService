@@ -13,7 +13,7 @@ namespace MultiShop.Order.WebApi.Extensions
             services.AddScoped<UpdateAddressCommandHandler>();
             services.AddScoped<RemoveAddressCommandHandler>();
 
-            services.AddScoped<GetOrderDetailByIdQueryHandler>();
+            services.AddScoped<GetOrderDetailQueryHandler>();
             services.AddScoped<GetOrderDetailByIdQueryHandler>();
             services.AddScoped<CreateOrderDetailCommandHandler>();
             services.AddScoped<UpdateOrderDetailCommandHandler>();
