@@ -14,7 +14,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 {
     opt.Authority = builder.Configuration["IdentityServerUrl"];
     opt.RequireHttpsMetadata = false;
-    opt.Audience ="ResourceCatalog";
+    opt.Audience = "ResourceCatalog";
 });
 builder.Services.ConfigureHandlers();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
