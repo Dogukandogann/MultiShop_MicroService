@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Cargo.BusinessLayer.Abstract;
@@ -7,14 +8,15 @@ using MultiShop.Cargo.EntityLayer.Concrete;
 
 namespace MultiShop.Cargo.WebApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class CargoCompanysController : ControllerBase
+    public class CargoCompaniesController : ControllerBase
     {
         private readonly ICargoCompanyService _cargoCompanyService;
         private readonly IMapper _mapper;
 
-        public CargoCompanysController(ICargoCompanyService cargoCompanyService, IMapper mapper)
+        public CargoCompaniesController(ICargoCompanyService cargoCompanyService, IMapper mapper)
         {
             _cargoCompanyService = cargoCompanyService;
             _mapper = mapper;
