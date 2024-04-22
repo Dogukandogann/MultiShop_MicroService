@@ -41,15 +41,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirement
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cargo", "Cargo", "{2E967E9C-559F-42AC-B7E1-29AB1C122CD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.Cargo.EntityLayer", "Services\Cargo\MultiShop.Cargo.EntityLayer\MultiShop.Cargo.EntityLayer.csproj", "{76E78DED-D2E0-4E8A-9CA5-AA0C7F372ED7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Cargo.EntityLayer", "Services\Cargo\MultiShop.Cargo.EntityLayer\MultiShop.Cargo.EntityLayer.csproj", "{76E78DED-D2E0-4E8A-9CA5-AA0C7F372ED7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.Cargo.BunsinessLayer", "Services\Cargo\MultiShop.Cargo.BunsinessLayer\MultiShop.Cargo.BunsinessLayer.csproj", "{D97CC8B3-A1E0-407F-B163-0EA46CCF13EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Cargo.BusinessLayer", "Services\Cargo\MultiShop.Cargo.BunsinessLayer\MultiShop.Cargo.BusinessLayer.csproj", "{D97CC8B3-A1E0-407F-B163-0EA46CCF13EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.Cargo.DataAccesLayer", "Services\Cargo\MultiShop.Cargo.DataAccesLayer\MultiShop.Cargo.DataAccesLayer.csproj", "{F8DA95F7-BD7D-4976-A88E-341343376E96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Cargo.DataAccesLayer", "Services\Cargo\MultiShop.Cargo.DataAccesLayer\MultiShop.Cargo.DataAccesLayer.csproj", "{F8DA95F7-BD7D-4976-A88E-341343376E96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.Cargo.DtoLayer", "Services\Cargo\MultiShop.Cargo.DtoLayer\MultiShop.Cargo.DtoLayer.csproj", "{E796C730-4B5D-41D1-8E14-E1E1B1CFDF98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Cargo.DtoLayer", "Services\Cargo\MultiShop.Cargo.DtoLayer\MultiShop.Cargo.DtoLayer.csproj", "{E796C730-4B5D-41D1-8E14-E1E1B1CFDF98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.Cargo.WebApi", "Services\Cargo\MultiShop.Cargo.WebApi\MultiShop.Cargo.WebApi.csproj", "{F748F98F-D989-459B-97F7-4A400AFA2380}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Cargo.WebApi", "Services\Cargo\MultiShop.Cargo.WebApi\MultiShop.Cargo.WebApi.csproj", "{F748F98F-D989-459B-97F7-4A400AFA2380}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
