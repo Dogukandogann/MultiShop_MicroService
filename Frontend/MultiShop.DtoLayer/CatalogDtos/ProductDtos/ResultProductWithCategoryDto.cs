@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MultiShop.DtoLayer.CatalogDtos.CategoryDtos
+namespace MultiShop.DtoLayer.CatalogDtos.ProductDtos
 {
-    public class CreateCategoryDto
+    internal class ResultProductWithCategoryDto
     {
-        public string Name { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿@using MultiShop.DtoLayer.CatalogDtos.CategoryDtos
-@model ResultCategoryDto
+﻿@model CreateCategoryDto
 @{
     ViewData["Title"] = "CreateCategory";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
@@ -10,12 +9,12 @@
         <div class="col-md-12">
             <div class="chart-box">
                 <h4>Kategori Ekleme Sayfası</h4>
-                <p>Add <code>.table-bordered</code> Yeni kategori ekleme işlemlerini  gerçekleştirebilirsiniz.</p>
+                <br />
                 <div class="bs-example" data-example-id="bordered-table">
 
                 <form method="post">
                     <label>Kategori Adı</label>
-                    <input type="text" class="form-control" asp-for="CategoryName"/>
+                    <input type="text" class="form-control" asp-for="Name"/>
                     <br />
                     <button class="btn btn-primary">Kategori Ekle</button>
                 </form>
