@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using MultiShop.Catalog.Dtos.ProductDtos;
 using MultiShop.Catalog.Entities;
@@ -10,12 +11,14 @@ namespace MultiShop.Catalog.Services.ProductServices
     {
         private readonly IMongoCollection<Product> _productCollection;
         private readonly IMapper _mapper;
+        private readonly IMongoCollection<Category> _categoriesCollection;
 
-        public ProductService(IMapper mapper,IDatabaseSettings _databaseSettings)
+        public ProductService(IMapper mapper, IDatabaseSettings _databaseSettings)
         {
             var client = new MongoClient(_databaseSettings.ConnectionString);
             var database = client.GetDatabase(_databaseSettings.DatabaseName);
             _productCollection = database.GetCollection<Product>(_databaseSettings.ProductCollectionName);
+            _categoriesCollection = database.GetCollection<Category>(_databaseSettings.CategoryCollectionName);
             _mapper = mapper;
         }
 
@@ -27,7 +30,7 @@ namespace MultiShop.Catalog.Services.ProductServices
 
         public async Task DeleteProductAsync(string id)
         {
-            await _productCollection.DeleteOneAsync(x=>x.ProductId.Equals(id));
+            await _productCollection.DeleteOneAsync(x => x.ProductId.Equals(id));
         }
 
         public async Task<List<ResultProductDto>> GetAllProductAsync()
@@ -38,8 +41,19 @@ namespace MultiShop.Catalog.Services.ProductServices
 
         public async Task<GetByIdProductDto> GetByIdProductAsync(string id)
         {
-            var values = await _productCollection.Find(x=>x.ProductId.Equals(id)).FirstOrDefaultAsync();
+            var values = await _productCollection.Find(x => x.ProductId.Equals(id)).FirstOrDefaultAsync();
             return _mapper.Map<GetByIdProductDto>(values);
+        }
+
+        public async Task<List<ResultProductsWithCategoryDto>> GetProductsWithCategoryAsync()
+        {
+           var values = await _productCollection.Find(x => true).ToListAsync();
+            foreach (var item in values) 
+            {
+                item.Category = await _categoriesCollection.Find(x => x.CategoryId.Equals(item.CategoryId)).FirstAsync();
+            }
+
+            return _mapper.Map<List<ResultProductsWithCategoryDto>>(values);
         }
 
         public async Task UpdateProductAsync(UpdateProductDto updateProductDto)
