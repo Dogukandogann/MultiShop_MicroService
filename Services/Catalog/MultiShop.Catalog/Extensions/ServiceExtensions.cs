@@ -1,8 +1,10 @@
-﻿using MultiShop.Catalog.Services.CategoryServices;
+﻿using MultiShop.Catalog.Services.CategoryService;
+using MultiShop.Catalog.Services.CategoryServices;
 using MultiShop.Catalog.Services.FeatureSliderServices;
 using MultiShop.Catalog.Services.ProductDetailServices;
 using MultiShop.Catalog.Services.ProductImageServices;
 using MultiShop.Catalog.Services.ProductServices;
+using MultiShop.Catalog.Services.SpecialOfferService;
 
 namespace MultiShop.Catalog.Extensions
 {
@@ -15,6 +17,7 @@ namespace MultiShop.Catalog.Extensions
             services.AddScoped<IProductDetailService, ProductDetailService>();
             services.AddScoped<IProductImageService, ProductImageService>();
             services.AddScoped<IFeatureSliderService, FeatureSliderService>();
+            services.AddScoped<ISpecialOfferService, SpecialOfferService>();
         }
     }
 }
