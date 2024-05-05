@@ -1,5 +1,6 @@
 ﻿using MultiShop.Catalog.Services.CategoryService;
 using MultiShop.Catalog.Services.CategoryServices;
+using MultiShop.Catalog.Services.FeatureServices;
 using MultiShop.Catalog.Services.FeatureSliderServices;
 using MultiShop.Catalog.Services.ProductDetailServices;
 using MultiShop.Catalog.Services.ProductImageServices;
@@ -18,6 +19,7 @@ namespace MultiShop.Catalog.Extensions
             services.AddScoped<IProductImageService, ProductImageService>();
             services.AddScoped<IFeatureSliderService, FeatureSliderService>();
             services.AddScoped<ISpecialOfferService, SpecialOfferService>();
+            services.AddScoped<IFeatureService, FeatureService>();
         }
     }
 }
