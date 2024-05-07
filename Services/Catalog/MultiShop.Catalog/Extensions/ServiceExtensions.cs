@@ -1,4 +1,6 @@
-﻿using MultiShop.Catalog.Services.BrandServices;
+﻿using MultiShop.Catalog.Services.Aboutservice;
+using MultiShop.Catalog.Services.AboutServices;
+using MultiShop.Catalog.Services.BrandServices;
 using MultiShop.Catalog.Services.CategoryService;
 using MultiShop.Catalog.Services.CategoryServices;
 using MultiShop.Catalog.Services.FeatureServices;
@@ -24,6 +26,7 @@ namespace MultiShop.Catalog.Extensions
             services.AddScoped<IFeatureService, FeatureService>();
             services.AddScoped<IOfferDiscountService, OfferDiscountService>();
             services.AddScoped<IBrandService, BrandService>();
+            services.AddScoped<IAboutService, AboutService>();
         }
     }
 }
