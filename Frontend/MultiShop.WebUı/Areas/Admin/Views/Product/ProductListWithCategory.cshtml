@@ -21,6 +21,7 @@
                                 <th>Ürün Kategori</th>
                                 <th>Sil</th>
                                 <th>Güncelle</th>
+                                <th>Ürün Görselleri</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,6 +35,7 @@
                                     <td>@item.Category.Name</td>
                                     <td><a href="DeleteProduct/@item.ProductId" class="btn btn-danger">Sil</a></td>
                                     <td><a href="UpdateProduct/@item.ProductId" class="btn btn-success">Güncelle</a></td>
+                                    <td><a href="/Admin/ProductImage/ProductImageDetail/@item.ProductId" class="btn btn-warning">Ürün Görselleri</a></td>
                                 </tr>
                             }
                         </tbody>

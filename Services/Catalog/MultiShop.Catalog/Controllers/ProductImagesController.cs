@@ -21,6 +21,12 @@ namespace MultiShop.Catalog.Controllers
             var values = await _ProductImageService.GetAllProductImageAsync();
             return Ok(values);
         }
+        [HttpGet("ProductImagesByProductId")]
+        public async Task<IActionResult> ProductImagesByProductId(string id)
+        {
+            var values = await _ProductImageService.GetByProductIdProdutImageAsync(id);
+            return Ok(values);
+        }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProductImageById(string id)
         {
