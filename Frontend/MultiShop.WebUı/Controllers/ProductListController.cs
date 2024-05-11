@@ -11,8 +11,9 @@ namespace MultiShop.WebUı.Controllers
         }
         public IActionResult ProductDetail(string id)
         {
-            ViewBag.x = id;
-            return View();
+                ViewBag.x = id;
+                return View();
+           
         }
     }
 }

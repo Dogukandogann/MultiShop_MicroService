@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MultiShop.DtoLayer.CatalogDtos.ProductImagesDtos;
+using MultiShop.DtoLayer.CatalogDtos.ProductImageDtos;
 using Newtonsoft.Json;
 using System.Text;
 
