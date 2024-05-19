@@ -21,6 +21,7 @@ namespace MultiShop.IdentityServer.Controllers
 		[HttpPost]
 		public async Task<IActionResult> UserLogin(UserLoginDto userLoginDto)
 		{
+
 			var result = await _signInManager.PasswordSignInAsync(userLoginDto.UserName,userLoginDto.Password,false,false);
             if (result.Succeeded)
             {
