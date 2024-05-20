@@ -1,4 +1,4 @@
-﻿
+﻿@model CreateLoginDto
 @{
     Layout = null;
 }
@@ -32,11 +32,11 @@
 				<h2>Giriş Formu</h2>
 				<div class="form-row">
 					<label for="your_username">Kullanıcı Adınız</label>
-					<input type="text" id="your_username" class="input-text">
+					<input type="text" id="your_username" asp-for="UserName" class="input-text">
 				</div>
 				<div class="form-row">
 					<label for="your_password">Şifreniz</label>
-					<input type="password" id="your_password" class="input-text">
+					<input type="password" id="your_password" asp-for="Password" class="input-text">
 				</div>
 				<div class="form-row-last">
 					<button class="register" style="height:30px">Giriş Yap</button>
