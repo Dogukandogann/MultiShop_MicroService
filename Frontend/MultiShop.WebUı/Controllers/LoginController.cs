@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.IdentityDtos.LoginDtos;
 using MultiShop.WebUı.Models;
+using MultiShop.WebUı.Services;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -13,10 +14,12 @@ namespace MultiShop.WebUı.Controllers
 	public class LoginController : Controller
 	{
 		private readonly IHttpClientFactory _httpClientFactory;
+		private readonly ILoginService _loginService;
 
-		public LoginController(IHttpClientFactory httpClientFactory)
+		public LoginController(IHttpClientFactory httpClientFactory, ILoginService loginService)
 		{
 			_httpClientFactory = httpClientFactory;
+			_loginService = loginService;
 		}
 		[HttpGet]
 		public IActionResult Index()
@@ -26,6 +29,7 @@ namespace MultiShop.WebUı.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Index(CreateLoginDto createLoginDto)
 		{
+			
 			var client = _httpClientFactory.CreateClient();
 			var content = new StringContent(JsonSerializer.Serialize(createLoginDto), Encoding.UTF8, "application/json");
 			var response = await client.PostAsync("https://localhost:5001/api/Logins", content);
@@ -51,6 +55,7 @@ namespace MultiShop.WebUı.Controllers
 						IsPersistent = true
 						};
 						await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme,new ClaimsPrincipal(claimsIdentity),authProps);
+						var id = _loginService.GetUserId;
 						return RedirectToAction("Index","Default");
                     }
                 }
