@@ -59,11 +59,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{01
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.WebUı", "Frontend\MultiShop.WebUı\MultiShop.WebUı.csproj", "{B98FF124-C645-4A5F-B6C6-EC0AEEBDA2A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.DtoLayer", "Frontend\MultiShop.DtoLayer\MultiShop.DtoLayer.csproj", "{9E018BE4-39BE-48D1-A223-5B830F5FF396}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.DtoLayer", "Frontend\MultiShop.DtoLayer\MultiShop.DtoLayer.csproj", "{9E018BE4-39BE-48D1-A223-5B830F5FF396}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Comment", "Comment", "{E7CF77B6-988B-4E25-A621-F39537F962F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.Comment", "Services\Comment\MultiShop.Comment\MultiShop.Comment.csproj", "{5BEE3A8B-25ED-4A4B-ADCF-03CFFCCA34BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Comment", "Services\Comment\MultiShop.Comment\MultiShop.Comment.csproj", "{5BEE3A8B-25ED-4A4B-ADCF-03CFFCCA34BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", "{ADA518EA-5D75-4465-8A9F-288779266EB9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RapidApi", "RapidApi", "{CB8F55DE-CECC-4202-86E9-ADE8869CA266}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
