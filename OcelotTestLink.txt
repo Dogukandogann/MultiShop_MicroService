@@ -1,0 +1,11 @@
+ //Discount Ms
+   
+    
+    
+   
+   
+
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "OcelotAuthenticationSchema",
+        "AllowedScopes": [ "ImagesFullPermission" ]
+      }
