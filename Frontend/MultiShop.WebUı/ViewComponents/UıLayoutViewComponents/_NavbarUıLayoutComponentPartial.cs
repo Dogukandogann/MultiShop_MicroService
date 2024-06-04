@@ -23,7 +23,7 @@ namespace MultiShop.WebUı.ViewComponents.UıLayoutViewComponents
             {
                 var request = new HttpRequestMessage
                 {
-                    RequestUri = new Uri("https://localhost:5001/connect/token"),
+                    RequestUri = new Uri("http://localhost:5001/connect/token"),
                     Method = HttpMethod.Post,
                     Content = new FormUrlEncodedContent(new Dictionary<string, string>
                     {

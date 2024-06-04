@@ -8,6 +8,7 @@ namespace MultiShop.WebUı.Services.Concrete
         private readonly IHttpContextAccessor _contextAccessor;
 
         public LoginService(IHttpContextAccessor contextAccessor)
+        
         {
             _contextAccessor = contextAccessor;
         }

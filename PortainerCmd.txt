@@ -4,7 +4,7 @@ docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /va
 
 		var client = _httpClientFactory.CreateClient();
 			var content = new StringContent(JsonSerializer.Serialize(createLoginDto), Encoding.UTF8, "application/json");
-			var response = await client.PostAsync("https://localhost:5001/api/Logins", content);
+			var response = await client.PostAsync("http://localhost:5001/api/Logins", content);
 			if (response.IsSuccessStatusCode)
 			{
 				var jsonData = await response.Content.ReadAsStringAsync();
