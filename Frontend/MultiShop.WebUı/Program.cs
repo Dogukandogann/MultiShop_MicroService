@@ -6,6 +6,13 @@ using MultiShop.WebUý.Services.Interfaces;
 using MultiShop.WebUý.Settings;
 using MultiShop.WebUý.Services.CatalogServices.CategoryServices;
 using MultiShop.WebUý.Handlers;
+using MultiShop.WebUý.Services.CatalogServices.ProductServices;
+using MultiShop.WebUý.Services.CatalogServices.SpecialOfferServices;
+using MultiShop.WebUý.Services.CatalogServices.SliderServices;
+using MultiShop.WebUý.Services.CatalogServices.FeatureServices;
+using MultiShop.WebUý.Services.CatalogServices.OfferDiscountServices;
+using MultiShop.WebUý.Services.CatalogServices.BrandServices;
+using MultiShop.WebUý.Services.CatalogServices.AboutServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,6 +57,43 @@ builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
 }).AddHttpMessageHandler <ClientCredentialTokenHandler>();
+builder.Services.AddHttpClient<IProductService, ProductService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+builder.Services.AddHttpClient<ISpecialOfferService, SpecialOfferService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<IFeatureSliderService, FeatureSliderService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<IFeatureService, FeatureService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<IOfferDiscountService, OfferDiscountService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<IBrandService, BrandService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<IAboutService, AboutService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MultiShop.DtoLayer.CatalogDtos.CategoryDtos;
 using MultiShop.DtoLayer.CatalogDtos.ProductDtos;
+using MultiShop.WebUı.Services.CatalogServices.CategoryServices;
+using MultiShop.WebUı.Services.CatalogServices.ProductServices;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -13,134 +15,101 @@ namespace MultiShop.WebUı.Areas.Admin.Controllers
     [Route("Admin/Product")]
     public class ProductController : Controller
     {
-        private readonly IHttpClientFactory _httpClientFactory;
-
-        private async Task<List<SelectListItem>> GetCategoryList()
+        private readonly IProductService _productService;
+        private readonly ICategoryService _categoryService;
+        public ProductController(IProductService productService, ICategoryService categoryService)
         {
-            using (var client = _httpClientFactory.CreateClient())
-            {
-                var response = await client.GetAsync("https://localhost:7070/api/Categories");
-                if (response.IsSuccessStatusCode)
-                {
-                    var jsonData = await response.Content.ReadAsStringAsync();
-                    var categories = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
-                    return categories.Select(x => new SelectListItem { Text = x.Name, Value = x.CategoryId }).ToList();
-                }
-                return new List<SelectListItem>();
-            }
+            _productService = productService;
+            _categoryService = categoryService;
         }
-        public ProductController(IHttpClientFactory httpClientFactory)
+        void ProductViewBagList()
         {
-            _httpClientFactory = httpClientFactory;
-        }
-        [Route("Index")]
-        public async Task<IActionResult> Index()
-        {
-            
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Ürünler";
             ViewBag.v3 = "Ürün Listesi";
             ViewBag.v0 = "Ürün İşlemleri";
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7070/api/Products");
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData);
-                return View(values);
-            }
+        }
+
+        [Route("Index")]
+        public async Task<IActionResult> Index()
+        {
+            ProductViewBagList();
+            var values = await _productService.GetAllProductAsync();
+            return View(values);
+        }
+
+        [Route("ProductListWithCategory")]
+        public async Task<IActionResult> ProductListWithCategory()
+        {
+            ProductViewBagList();
+
+            //var client = _httpClientFactory.CreateClient();
+            //var responseMessage = await client.GetAsync("https://localhost:7070/api/Products/ProductListWithCategory");
+            //if (responseMessage.IsSuccessStatusCode)
+            //{
+            //    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            //    var values = JsonConvert.DeserializeObject<List<ResultProductWithCategoryDto>>(jsonData);
+            //    return View(values);
+            //}
             return View();
         }
+
         [Route("CreateProduct")]
         [HttpGet]
         public async Task<IActionResult> CreateProduct()
         {
-            ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Ürünler";
-            ViewBag.v3 = "Ürün Listesi";
-            ViewBag.v0 = "Ürün İşlemleri";
-            var categories = await GetCategoryList();
-            ViewBag.CategoryValues = categories;
+            ProductViewBagList();
+            var values = await _categoryService.GetAllCategoryAsync();
+            List<SelectListItem> categoryValues = (from x in values
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.Name,
+                                                       Value = x.CategoryId
+                                                   }).ToList();
+            ViewBag.CategoryValues = categoryValues;
             return View();
         }
+
         [HttpPost]
         [Route("CreateProduct")]
         public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createProductDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7070/api/Products", stringContent);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "Product", new { area = "Admin" });
-            }
-            return View();
+            await _productService.CreateProductAsync(createProductDto);
+            return RedirectToAction("Index", "Product", new { area = "Admin" });
         }
+
         [Route("DeleteProduct/{id}")]
         public async Task<IActionResult> DeleteProduct(string id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync("https://localhost:7070/api/Products?id=" + id);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "Product", new { area = "Admin" });
-            }
-            return View();
+            await _productService.DeleteProductAsync(id);
+            return RedirectToAction("Index", "Product", new { area = "Admin" });
         }
+
         [Route("UpdateProduct/{id}")]
         [HttpGet]
         public async Task<IActionResult> UpdateProduct(string id)
         {
-            ViewBag.v0 = "Ürün İşlemleri";
-            ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Ürünler";
-            ViewBag.v3 = "Ürün Güncelleme Sayfası";
+            ProductViewBagList();
 
-            var categories = await GetCategoryList();
-            ViewBag.CategoryValues = categories;
+            var values = await _categoryService.GetAllCategoryAsync();
+            List<SelectListItem> categoryValues = (from x in values
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.Name,
+                                                       Value = x.CategoryId
+                                                   }).ToList();
+            ViewBag.CategoryValues = categoryValues;
 
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7070/api/Products/" + id);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<UpdateProductDto>(jsonData);
-                return View(values);
-            }
-            return View();
+            var productValues = await _productService.GetByIdProductAsync(id);
+            return View(productValues);
         }
+
         [Route("UpdateProduct/{id}")]
         [HttpPost]
         public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(updateProductDto);
-            StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:7070/api/Products/", content);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "Product", new { area = "Admin" });
-            }
-            return View();
-        }
-        [Route("ProductListWithCategory")]
-        public async Task<IActionResult> ProductListWithCategory()
-        {
-
-            ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Ürünler";
-            ViewBag.v3 = "Ürün Listesi";
-            ViewBag.v0 = "Ürün İşlemleri";
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7070/api/Products/ProductListWithCategory");
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultProductWithCategoryDto>>(jsonData);
-                return View(values);
-            }
-            return View();
+            await _productService.UpdateProductAsync(updateProductDto);
+            return RedirectToAction("Index", "Product", new { area = "Admin" });
         }
     }
 }

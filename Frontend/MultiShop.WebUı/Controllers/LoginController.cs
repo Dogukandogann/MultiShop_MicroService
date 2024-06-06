@@ -31,14 +31,5 @@ namespace MultiShop.WebUı.Controllers
 			return View();
 		}
 
-		//[HttpPost]
-		public async Task<IActionResult> SignIn(SignInDto signInDto)
-		{
-            
-			signInDto.UserName = "ali01";
-            signInDto.Password = "123456aA*";
-			await _identityService.SignIn(signInDto);
-			return RedirectToAction("Index","User");
-        }
 	}
 }
