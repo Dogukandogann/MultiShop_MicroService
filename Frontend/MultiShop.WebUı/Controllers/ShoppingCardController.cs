@@ -16,15 +16,17 @@ namespace MultiShop.WebUı.Controllers
             _basketService = basketService;
         }
 
-        public async Task<IActionResult> Index()
+        public  IActionResult Index()
         {
-            var values = await _basketService.GetBasket();
-            return View(values);
+            ViewBag.Directory1 = "Ana Sayfa";
+            ViewBag.Directory2 = "Ürünler";
+            ViewBag.Directory2 = "Sepetim";
+            return View();
         }
 
-        public async Task<IActionResult> AddBasketItem(string productId)
+        public async Task<IActionResult> AddBasketItem(string id)
         {
-            var product = await _productService.GetByIdProductAsync(productId);
+            var product = await _productService.GetByIdProductAsync(id);
             if (product == null)
                 return NotFound("Product not found");
 
@@ -33,14 +35,15 @@ namespace MultiShop.WebUı.Controllers
                 ProductId = product.ProductId,
                 ProductName = product.ProductName,
                 Price = product.Price,
-                Quantity = 1
+                Quantity = 1,
+                ProductImageUrl = product.ProductImageUrl
             });
 
             return RedirectToAction("Index");
         }
-        public async Task<IActionResult> RemoveBasketItem(string productId)
+        public async Task<IActionResult> RemoveBasketItem(string id)
         {
-            await _basketService.RemoveBasketItem(productId);
+            await _basketService.RemoveBasketItem(id);
             return RedirectToAction("Index");
         }
     }

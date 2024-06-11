@@ -25,11 +25,12 @@ namespace MultiShop.WebUı.Controllers
 		{
 			return View();
 		}
-		[HttpPost]
-		public async Task<IActionResult> Index(CreateLoginDto createLoginDto)
-		{
-			return View();
-		}
+        [HttpPost]
+        public async Task<IActionResult> Index(SignInDto signInDto)
+        {
+            await _identityService.SignIn(signInDto);
+            return RedirectToAction("Index", "User");
+        }
 
-	}
+    }
 }
