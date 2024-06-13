@@ -16,8 +16,11 @@ namespace MultiShop.WebUı.Controllers
             _basketService = basketService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string code,int discountRate,decimal newPrice)
         {
+            ViewBag.Code = code;
+            ViewBag.DiscountRate = discountRate;
+            ViewBag.TotalPriceWithDiscount=newPrice;
             ViewBag.Directory1 = "Ana Sayfa";
             ViewBag.Directory2 = "Ürünler";
             ViewBag.Directory2 = "Sepetim";
