@@ -2,6 +2,7 @@
 
 namespace MultiShop.WebUı.Controllers
 {
+    [Area("User")]
     public class PaymentController : Controller
     {
         public IActionResult Index()
