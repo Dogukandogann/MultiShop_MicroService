@@ -23,6 +23,7 @@ using MultiShop.WebUý.Services.OrderServices.OrderAddressServices;
 using MultiShop.WebUý.Services.OrderServices.OrderOrderingServices;
 using MultiShop.WebUý.Services.MessageServices;
 using MultiShop.WebUý.Services.MessageService;
+using MultiShop.WebUý.Services.UserIdentityServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -140,6 +141,10 @@ builder.Services.AddHttpClient<IOrderOrderingService, OrderOrderingService>(opt 
 builder.Services.AddHttpClient<IMessageService, MessageService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Order.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+builder.Services.AddHttpClient<IUserIdentityService, UserIdentityService>(opt =>
+{
+    opt.BaseAddress = new Uri(values.IdentityServerUrl);
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 

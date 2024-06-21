@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using MultiShop.WebUı.Services.Interfaces;
 
 namespace MultiShop.WebUı.Controllers
@@ -17,5 +18,6 @@ namespace MultiShop.WebUı.Controllers
             var values = await _userService.GetUserInfo();
             return View(values);
         }
+        
     }
 }
