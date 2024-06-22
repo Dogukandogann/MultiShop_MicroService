@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MultiShop.Cargo.EntityLayer.Concrete
+namespace MultiShop.DtoLayer.CargoDtos.CargoCustomerDtos
 {
-    public class CargoCustomer
+    public class GetCargoCustomerByIdDto
     {
         public int CargoCustomerId { get; set; }
         public string CustomerName { get; set; }
@@ -17,6 +17,5 @@ namespace MultiShop.Cargo.EntityLayer.Concrete
         public string CustomerCity { get; set; }
         public string CustomerDistrict { get; set; }
         public string? UserCustomerId { get; set; }
-
     }
 }

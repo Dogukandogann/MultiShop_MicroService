@@ -50,5 +50,10 @@ namespace MultiShop.Cargo.WebApi.Controllers
             _cargoCustomerService.Tupdate(_mapper.Map<CargoCustomer>(updateCargoCustomerDto));
             return Ok("Kargo müşteri güncelleme işlemi başarılı");
         }
+        [HttpGet("GetCargoCustomerById")]
+        public IActionResult GetCargoCustomerById(string id)
+        {
+            return Ok(_cargoCustomerService.TGetCargoCustomerById(id));
+        }
     }
 }
