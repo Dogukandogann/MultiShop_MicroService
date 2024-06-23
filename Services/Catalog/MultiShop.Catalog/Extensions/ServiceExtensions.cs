@@ -11,6 +11,7 @@ using MultiShop.Catalog.Services.ProductDetailServices;
 using MultiShop.Catalog.Services.ProductImageServices;
 using MultiShop.Catalog.Services.ProductServices;
 using MultiShop.Catalog.Services.SpecialOfferService;
+using MultiShop.Catalog.Services.StatisticServices;
 
 namespace MultiShop.Catalog.Extensions
 {
@@ -29,6 +30,7 @@ namespace MultiShop.Catalog.Extensions
             services.AddScoped<IBrandService, BrandService>();
             services.AddScoped<IAboutService, AboutService>();
             services.AddScoped<IContactService, ContactService>();
+            services.AddScoped<IStatisticService, StatisticService>();
         }
     }
 }
