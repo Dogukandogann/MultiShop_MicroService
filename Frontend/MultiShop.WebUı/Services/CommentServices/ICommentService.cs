@@ -1,6 +1,6 @@
 ﻿using MultiShop.DtoLayer.CommentDtos;
 
-namespace MultiShop.WebUı.Services.CatalogServices.CommentServices
+namespace MultiShop.WebUı.Services.CommentServices
 {
     public interface ICommentService
     {
@@ -10,5 +10,8 @@ namespace MultiShop.WebUı.Services.CatalogServices.CommentServices
         Task UpdateCommentAsync(UpdateCommentDto updateCommentDto);
         Task DeleteCommentAsync(string id);
         Task<UpdateCommentDto> GetByIdCommentAsync(string id);
+        Task<int> GetTotalCommentCount();
+        Task<int> GetActiveCommentCount();
+        Task<int> GetPAssiveCommentCount();
     }
 }

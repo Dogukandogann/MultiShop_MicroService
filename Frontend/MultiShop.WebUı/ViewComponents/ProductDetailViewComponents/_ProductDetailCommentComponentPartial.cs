@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CommentDtos;
-using MultiShop.WebUı.Services.CatalogServices.CommentServices;
+using MultiShop.WebUı.Services.CommentServices;
 using Newtonsoft.Json;
 
 namespace MultiShop.WebUı.ViewComponents.ProductDetailViewComponents

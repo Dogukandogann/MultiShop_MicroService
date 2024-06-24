@@ -6,11 +6,11 @@ namespace MultiShop.Catalog.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StatisticController : ControllerBase
+    public class StatisticsController : ControllerBase
     {
         private readonly IStatisticService _statisticService;
 
-        public StatisticController(IStatisticService statisticService)
+        public StatisticsController(IStatisticService statisticService)
         {
             _statisticService = statisticService;
         }

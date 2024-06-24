@@ -58,7 +58,7 @@ namespace MultiShop.Message.Services
 
         public async Task<int> GetTotalMessageCount()
         {
-            var values = _messageContext.UserMessages.Count();
+            int values = await _messageContext.UserMessages.CountAsync();
             return values;
         }
 
