@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using MultiShop.Message.Dtos;
 using MultiShop.Message.Services;
 
@@ -56,6 +57,12 @@ namespace MultiShop.Message.Controllers
         public async Task<IActionResult> GetTotalMessageCount()
         {
             var values = await _userMessageService.GetTotalMessageCount();
+            return Ok(values);
+        }
+        [HttpGet("GetTotalMessageCountByReceiverId")]
+        public async Task<IActionResult> GetTotalMessageCountByReceiverId(string id)
+        {
+            var values = await _userMessageService.GetTotalMessageCountByReceiverId(id);
             return Ok(values);
         }
 

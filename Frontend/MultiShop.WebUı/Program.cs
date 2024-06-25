@@ -146,7 +146,7 @@ builder.Services.AddHttpClient<IOrderOrderingService, OrderOrderingService>(opt 
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 builder.Services.AddHttpClient<IMessageService, MessageService>(opt =>
 {
-    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Order.Path}");
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Message.Path}");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 builder.Services.AddHttpClient<IUserIdentityService, UserIdentityService>(opt =>
 {
@@ -176,7 +176,6 @@ builder.Services.AddHttpClient<IUserStatisticsService, UserStatisticsService>(op
 {
     opt.BaseAddress = new Uri(values.IdentityServerUrl);
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
-
 
 
 
