@@ -30,6 +30,7 @@ using MultiShop.WebUý.Services.StatisticsServices.CatalogStatisticsServices;
 using MultiShop.WebUý.Services.StatisticsServices.DiscountStatisticsServices;
 using MultiShop.WebUý.Services.StatisticsServices.MessageStatisticsServices;
 using MultiShop.WebUý.Services.StatisticsServices.UserStatisticsServices;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -177,6 +178,11 @@ builder.Services.AddHttpClient<IUserStatisticsService, UserStatisticsService>(op
     opt.BaseAddress = new Uri(values.IdentityServerUrl);
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
+builder.Services.AddLocalization(opt =>
+{
+    opt.ResourcesPath = "Resources";
+});
+builder.Services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
 
 
 
@@ -200,7 +206,9 @@ app.UseRouting();
 app.UseAuthentication();
 
 app.UseAuthorization();
-
+var supportedCultures = new[]{ "en","fr","de","tr"};
+var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[3]).AddSupportedCultures(supportedCultures).AddSupportedUICultures(supportedCultures);
+app.UseRequestLocalization(localizationOptions);
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
